@@ -105,7 +105,7 @@
 		</div>
 		<div class="container-tx2-block">
 			<p>
-				 You can dump games using your computer by using select compatible Blu-ray drives. Please note that you can only use this method if a .ird file is available online for the decryption of the disc. Not every Blu-ray drive will recognize PlayStation 3 games due to how PlayStation 3 format discs are designed. <br>
+				 You can dump games using your computer by using select compatible Blu-ray drives. Please note that you can only use this method if a .ird file or decryption key is available online for the decryption of the disc. Not every Blu-ray drive will recognize PlayStation 3 games due to how PlayStation 3 format discs are designed. <br>
 				<br>
 				<b>Note: Blu-ray drives require a Mediatek chipset and a +6 read offset to fully read PlayStation 3 discs.</b>
 				<br>
