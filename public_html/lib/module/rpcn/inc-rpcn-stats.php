@@ -3,6 +3,7 @@ class RPCNStats {
     private string $games_json;
     private string $log_file;
     private string $api_url;
+    private string $icons_json;
 
     public int $total_users = 0;
 
@@ -15,12 +16,26 @@ class RPCNStats {
     /** @var array<string, array<string>> */
     public array $title_ids = [];
 
+    /** @var array<string, string> */
+    public array $title_icons = [];
+
     public bool $has_error = false;
 
-    public function __construct(string $games_json, string $log_file, string $api_url) {
+    private array $icon_alias = [
+        "BLES00767" => "MRTC00001", "BLUS30462" => "MRTC00001", "BCKS10106" => "MRTC00001", "BLJM60189" => "MRTC00001", "BLJM60338" => "MRTC00001",
+        "BLES00710" => "MRTC00002", "BLUS30434" => "MRTC00002", "BLAS50173" => "MRTC00002", "BLJM60177" => "MRTC00002",
+        "BLES00783" => "MRTC00003", "BLUS30416" => "MRTC00003",
+        "BLES00832" => "MRTC00005", "BLUS30492" => "MRTC00005", "BLAS50250" => "MRTC00005",
+        "BLUS30602" => "MRTC00011", "BLES01046" => "MRTC00011",
+        "BLES01009" => "MRTC00014", "BLUS30547" => "MRTC00014", "BLJM60272" => "MRTC00014",
+        "BLES01112" => "MRTC00016"
+    ];
+
+    public function __construct(string $games_json, string $log_file, string $api_url, string $icons_json) {
         $this->games_json = $games_json;
         $this->log_file = $log_file;
         $this->api_url = $api_url;
+        $this->icons_json = $icons_json;
 
         try {
             $this->processStats();
@@ -74,6 +89,11 @@ class RPCNStats {
 
         if (json_last_error() !== JSON_ERROR_NONE) {
             throw new Exception(json_last_error_msg());
+        }
+
+        $icons_db = [];
+        if (file_exists($this->icons_json)) {
+            $icons_db = json_decode(file_get_contents($this->icons_json), true) ?: [];
         }
 
         // cURL
@@ -130,6 +150,8 @@ class RPCNStats {
             }
 
             $ids = $info['id'] ?? [$comm_id];
+
+            $this->title_ids[$game_title] = array_unique(array_merge($this->title_ids[$game_title], $ids));
 
             // Collect regions for display
             if (!isset($this->title_regions[$game_title])) {
@@ -201,6 +223,17 @@ class RPCNStats {
         $this->title_player_counts = [];
         foreach ($temp_array as $item) {
             $this->title_player_counts[$item['game_title']] = $item['player_count'];
+            
+            if ($item['player_count'] > 0 && !isset($this->title_icons[$item['game_title']])) {
+                foreach ($this->title_ids[$item['game_title']] as $id_to_check) {
+                    $search_id = $this->icon_alias[$id_to_check] ?? $id_to_check;
+                    if (isset($icons_db[$search_id])) {
+                        $hash = $icons_db[$search_id];
+                        $this->title_icons[$item['game_title']] = "/cdn/rpcn/icon0/{$hash}.png";
+                        break;
+                    }
+                }
+            }
         }
     }
 }

@@ -3,7 +3,7 @@ include 'lib/module/rpcn/config.php';
 include 'lib/module/rpcn/inc-rpcn-stats.php';
 
 // Initialize RPCNStats class
-$rpcn_stats = new RPCNStats($games_json, $log_file, $api_url);
+$rpcn_stats = new RPCNStats($games_json, $log_file, $api_url, $icons_json);
 
 // Fetch data and check for errors
 $has_error = $rpcn_stats->has_error;
@@ -35,6 +35,19 @@ $title_player_counts = $rpcn_stats->title_player_counts;
 <meta name="twitter:card" content="summary_large_image">
 <?php include 'lib/module/sys-css.php';?>
 <?php include 'lib/module/sys-js.php';?>
+<style>
+.rpcn-list-title-container {
+    display: flex;
+    align-items: center;
+}
+.rpcn-game-icon {
+    width: 64px;
+    height: auto;
+    border-radius: 4px;
+    margin: 0 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+</style>
 </head>
 <body>
 <?php include 'lib/module/sys-global.php';?>
@@ -152,6 +165,9 @@ $title_player_counts = $rpcn_stats->title_player_counts;
 										<div class='rpcn-list-title'>
 											<div class='rpcn-list-title-container'>
 												<div class='rpcn-list-ico-status'></div>
+                                                <?php if (!empty($rpcn_stats->title_icons[$game_title])): ?>
+                                                    <img src="<?php echo htmlspecialchars($rpcn_stats->title_icons[$game_title]); ?>" alt="Game Icon" class="rpcn-game-icon">
+                                                <?php endif; ?>
 												<?php echo htmlspecialchars(!empty($game_title) ? $game_title : 'Unknown'); ?>
 											</div>
 											<?php if (!empty($rpcn_stats->title_regions[$game_title])): ?>
