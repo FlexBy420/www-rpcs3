@@ -58,6 +58,11 @@
 										</a>
 									</div>
 									<div class="footer-tx2-bound">
+										<a href="/requirements">
+										<span>Requirements</span>
+										</a>
+									</div>
+									<div class="footer-tx2-bound">
 										<a href="/branding">
 										<span>Branding</span>
 										</a>
