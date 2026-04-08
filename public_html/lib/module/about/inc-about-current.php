@@ -207,21 +207,16 @@
 		<div class='user-tx1-content darkmode-txt'>
 			<span class="user-tx2-member pulsate">
 			Ani </span>
+			<span class="user-con-role user-role-manager">
+			Community Manager </span>
 			<span class="user-con-role user-role-server">
 			Web Backend Developer </span>
-			<span class="user-con-role user-role-manager">
-			Project Manager </span>
 		</div>
 		<div class='user-con-divider role-manager darkmode-divider'>
 		</div>
 		<div class='user-tx3-content darkmode-txt'>
 			<span>
-			Ani joined the project in 2016, initially as a forum moderator and helper for the old RPCS3 Forums. 
-			He currently serves RPCS3 as a Developer, mostly on the Web side, having developed all of RPCS3's Web Backend, notably the Compatibility List, the Builds Page, and all the APIs used by the emulator for compatibility data, emulator updates, game patches and automatic settings.
-			He is also responsible for managing RPCS3's hosting infrastructure for all the online services that RPCS3 runs, including the Forums, Wiki, Blog, Git Archive, and others. Occasionally submits fixes to the emulator as well and helps with debugging.
-			<br><br>
-			Ani also is RPCS3's Social Media Manager, responsible for managing and moderating the Discord, the Forums, RPCS3's X account, and the subreddit. 
-			He also contributed to writing blog posts, including the progress reports and the older, manually written full version changelogs. </span>
+			Ani joined the staff in mid 2016 as a Forum Moderator and Helper for the old RPCS3 forums. Ani currently serves RPCS3 as a Web Developer, having developed RPCS3's Compatibility List, as well as Social Media Manager, responsible for managing and moderating the Forums, the Subreddit and running RPCS3's X account. He also writes the full version changelogs, and used to contribute to writing the progress reports. </span>
 		</div>
 		<div class="user-con-subtitle">
 			<span class="user-tx1-subtitle ">Computer Specifications (2026)</span>
@@ -246,7 +241,7 @@
 					<div class="specbox-ico-part" style="background: url('/img/icons/list/gpu-amd.png') no-repeat center;">
 					</div>
 					<div class="specbox-tx1-part darkmode-txt">
-						<span>Radeon RX 7900 XTX</span>
+						<span>Radeon RX 6800 XT</span>
 					</div>
 				</div>
 				<div class="specbox-con-part darkmode-specbox">
